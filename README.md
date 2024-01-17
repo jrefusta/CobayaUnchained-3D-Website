@@ -11,7 +11,7 @@ This repository contains the source code and files needed for the CobayaUnchaine
 Here's the link to the webpage ([url_de_tu_pagina](https://www.cobayaunchained.com/))
 
 
-![STARDUSTER Preview](/static/images/Cobaya_Unchained.gif)
+![STARDUSTER Preview](/static/images/CobayaUnchained.gif)
 
 
 
