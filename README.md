@@ -8,7 +8,7 @@ Welcome to the official repository of CobayaUnchained website, featuring our fla
 This repository contains the source code and files needed for the CobayaUnchained website. Our website is dedicated to showcase our main game, STARDUSTER, with a brief immersive 3D experience, providing information about the game and links to the demo.
 
 ## Website
-Here's the link to the webpage ([url_de_tu_pagina](https://www.cobayaunchained.com/))
+You can check the webpage [here](https://www.cobayaunchained.com/)
 
 
 ![STARDUSTER Preview](/static/images/CobayaUnchained.gif)
@@ -17,9 +17,9 @@ Here's the link to the webpage ([url_de_tu_pagina](https://www.cobayaunchained.c
 
 ## Technologies Used
 - HTML5
-- CSS3
+- [ThreeJS](https://threejs.org/)
 - JavaScript
-- [Library or Framework used, if applicable]
+- Blenbder
 
 ## Note on Contributions
 This project is not open to external contributions. We appreciate your interest, but we do not accept pull requests or contributions at this time. Feel free to use the code for personal or educational purposes.
