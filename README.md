@@ -18,7 +18,8 @@ You can check the webpage [here](https://www.cobayaunchained.com/)
 - HTML5
 - [ThreeJS](https://threejs.org/)
 - JavaScript
-- Blenbder
+- Blender
+- GLSL
 
 ## Note on Contributions
 This project is not open to external contributions. We appreciate your interest, but we do not accept pull requests or contributions at this time. Feel free to use the code for personal or educational purposes.
