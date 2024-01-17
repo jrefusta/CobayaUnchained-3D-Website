@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cobaya Unchained</title>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <link rel="icon" href="/static/images/CobayaUnchainedLogo2.ico" type="image/x-icon" />
+  <style>
+    @font-face {
+      font-family: 'Nexa';
+      src: url('/fonts/Nexa-ExtraLight.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'NexaBold';
+      src: url('/fonts/Nexa-Heavy.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      font-family: 'Nexa', sans-serif;
+    }
+
+    #header {
+      position: absolute;
+      height: 6vh;
+      margin-top: 6vh;
+      width: 100vw;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      background: linear-gradient(to left, rgba(255, 171, 171, 0.7), rgba(255, 204, 204, 0.7));
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      flex-direction: row;
+      font-family: 'NexaBold', sans-serif;
+      display: flex
+    }
+
+    #cobayaUnchainedLogo {
+      width: 100%
+    }
+
+    #playDemoNow {
+      font-family: 'NexaBold', sans-serif;
+    }
+
+    #playDemoNow p {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    #starduster_logo {
+      text-align: center;
+      pointer-events: none;
+    }
+
+    #itchioBadge {
+      display: flex;
+      margin-bottom: 1vh;
+      margin-top: 2vh;
+      width: 200px;
+      height: auto;
+    }
+
+    #info_container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-sizing: border-box;
+      text-align: center;
+      opacity: 0;
+      align-items: center;
+      flex-direction: column;
+      display: none;
+    }
+
+    #scroll_image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-sizing: border-box;
+      text-align: center;
+      flex-direction: column;
+      animation: sinusoidalOpacity 2s infinite linear;
+    }
+
+    @keyframes sinusoidalOpacity {
+
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    #scroll_image img {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      #info_container {
+        width: 90vw;
+      }
+    }
+
+    #starduster_logo_img {
+      width: auto;
+      width: 30vw;
+      align-items: center;
+      order: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+      #starduster_logo_img {
+        width: 90vw;
+      }
+
+      #cobayaUnchainedLogo {
+        width: 40vw;
+      }
+    }
+
+    #black-background {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0.8;
+      z-index: 1000;
+    }
+
+    #videoYT {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2000;
+      height: 56.25%;
+      width: 56.25%;
+      margin: auto;
+    }
+
+    #videoFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    #quitButton {
+      cursor: pointer;
+      position: absolute;
+      display: block;
+      right: 0px;
+      height: 3rem;
+      bottom: calc(100% + 0.25rem);
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      transition: 0.5s;
+    }
+
+    #quitButton img {
+      opacity: 1;
+      transition: 0.5s;
+    }
+
+    #quitButton img:hover {
+      opacity: 0.6;
+      transition: 0.5s;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      opacity: 0.8;
+      background: linear-gradient(to left, rgba(88, 88, 88, 0.1), rgba(153, 153, 153, 0.1), rgba(88, 88, 88, 0.1));
+      min-height: 100px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: none;
+    }
+
+    .social-icon,
+    .footer p {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px 0;
+      padding-inline-start: 0;
+      flex-wrap: wrap;
+    }
+
+    .social-icon__item {
+      list-style: none;
+    }
+
+    .social-icon__link {
+      font-size: 2rem;
+      color: #fff;
+      margin: 0 10px;
+      display: inline-block;
+      transition: 0.5s;
+    }
+
+    .social-icon__link:hover {
+      transform: translateY(-10px);
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      top: 6vh;
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      opacity: 1;
+    }
+
+    .menu__link {
+      cursor: pointer;
+      font-size: 1rem;
+      color: black;
+      margin: 0 10px;
+      display: inline-block;
+      text-decoration: none;
+      opacity: 0.6;
+      transition: 0.5s;
+      font-weight: 300;
+    }
+
+    .menu__link_dropdown {
+      display: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: black;
+      margin: 0 10px;
+      display: inline-block;
+      text-decoration: none;
+      transition: 0.5s;
+      opacity: 0.6;
+      font-weight: 300;
+    }
+
+    .menu__link:hover {
+      opacity: 1;
+    }
+
+    .footer p {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px + 23vh;
+        width: 50vw;
+        right: 0;
+        background-color: rgba(255, 171, 171, 0.8);
+      }
+
+      .menu__item {
+        margin: 5px 0;
+      }
+
+      .menu__item_dropdown {
+        display: none;
+        margin: 5px 0;
+      }
+
+      .menu__sep {
+        width: 100%;
+        height: 2px;
+        color: black;
+        background-color: black;
+      }
+    }
+
+    #dropdown_menu {
+      display: none;
+    }
+
+    #dropdown_menu img {
+      width: 40px;
+      opacity: 0.7;
+      transition: 0.5s;
+    }
+
+    #dropdown_menu img:hover {
+      opacity: 1
+    }
+
+    #scrollImgMouse {
+      transition: 0.5s;
+    }
+
+    #scrollImgMessage {
+      transition: 0.5s;
+    }
+
+    #scrollImgMobile {
+      transition: 0.5s;
+    }
+
+    #dropdown_menu.show {
+      display: flex;
+    }
+
+    @media screen and (max-width: 768px) {
+      #dropdown_menu {
+        display: flex;
+        padding: 10px
+      }
+    }
+
+    .loading-bar {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 11px;
+      background: rgba(255, 171, 171, 1);
+      transform: scaleX(0.3);
+      transform-origin: top left;
+      border-radius: 6px;
+      transition: transform 0.5s;
+    }
+
+    .loading-bar.ended {
+      transform: scaleX(0);
+      transform-origin: 100% 0;
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .jusitfy {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="black-background" onclick=hideVideo()></div>
+  <div class="loading-bar"></div>
+  <div id="header">
+    <a>
+      <img id="cobayaUnchainedLogo" src="/static/images/CobayaUnchainedLogo.ico" alt="Logo" />
+    </a>
+    <ul class="menu">
+      <li class="menu__sep"></li>
+
+      <li class="menu__item"><a class="menu__link" onclick=showVideo()>WATCH TRAILER</a></li>
+      <li class="menu__sep"></li>
+      <li class="menu__item"><a class="menu__link" href="https://jrefusta.itch.io/starduster" target="_blank">DOWNLOAD
+          DEMO</a></li>
+      <li class="menu__sep"></li>
+
+      <li class="menu__item"><a class="menu__link" href="mailto:cobayaunchained@gmail.com" target="_blank">CONTACT</a>
+    </ul>
+    <a target="_blank" id="dropdown_menu">
+      <img src="/static/images/dropdown.svg" alt="Logo" />
+    </a>
+  </div>
+  <div id="canvas">
+    <div id="videoYT">
+      <a onclick=hideVideo() id="quitButton">
+        <img type="image/svg+xml" src="/static/images/cross.svg" width="30px" height=auto />
+      </a>
+      <iframe id="videoFrame"
+        src="https://www.youtube.com/embed/2oBRekRiF4I?modestbranding=1&amp;controls=1&amp;rel=0&amp;enablejsapi=1&amp;widgetid=9&amp;loop=1"
+        frameborder="0" allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+      </iframe>
+    </div>
+    <div id="scroll_image">
+      <img id="scrollImgMouse" type="image /svg+xml" src="/static/images/scroll-down-mouse.svg" width="120px"
+        height=auto style="display:none;" />
+      <img id="scrollImgMobile" type="image /svg+xml" src="/static/images/scroll-down-mobile.svg" width="120px"
+        height=auto style="display:none;" />
+
+      <strong id="scrollImgMessage" style="color:white; display:none;">SCROLL DOWN</strong>
+    </div>
+    <div id="info_container">
+      <div id="starduster_logo">
+        <img id="starduster_logo_img" src="/static/images/Starduster_Logo_White.png" alt="Starduster" />
+      </div>
+      <div id="playDemoNow">
+        <p style="color:white;">PLAY DEMO NOW</p>
+      </div>
+
+      <a id="itchioBadge" href="https://jrefusta.itch.io/starduster" target="_blank">
+        <img type="image/svg+xml" src="/static/images/itchio.svg" width="200px" height=auto />
+      </a>
+    </div>
+    <footer class="footer" id="footer">
+      <ul class="social-icon">
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://www.tiktok.com/@cobayaunchained" target="_blank">
+            <ion-icon name="logo-tiktok"></ion-icon>
+          </a>
+        </li>
+
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://twitter.com/cobayaunchained" target="_blank">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a>
+        </li>
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://www.youtube.com/@CobayaUnchained" target="_blank">
+            <ion-icon name="logo-youtube"></ion-icon>
+          </a>
+        </li>
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://www.instagram.com/cobayaunchained" target="_blank">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a>
+        </li>
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="mailto:cobayaunchained@gmail.com" target="_blank">
+            <ion-icon name="mail-outline"></ion-icon>
+          </a>
+        </li>
+      </ul>
+      <div class="jusitfy">
+        <p>&copy;2024 Cobaya Unchained S.L. | All Rights Reserved</p>
+        <p>Designed and developed by <strong><a href="https://twitter.com/jrefusta" target="_blank"
+              style="color: white; text-decoration: none;">&nbsp;@jrefusta</a></strong></p>
+      </div>
+
+    </footer>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    const videoContainer = document.getElementById('videoYT');
+    const blackBackground = document.getElementById('black-background');
+
+    let youtubePlayer;
+
+    function onYouTubeIframeAPIReady() {
+      youtubePlayer = new YT.Player('videoFrame', {
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+    }
+
+    function showVideo() {
+      videoContainer.style.display = 'block';
+      blackBackground.style.display = 'block';
+      youtubePlayer.playVideo();
+    }
+
+    function hideVideo() {
+      youtubePlayer.pauseVideo();
+      videoContainer.style.display = 'none';
+      blackBackground.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>
