@@ -5,15 +5,14 @@
 Welcome to the official repository of CobayaUnchained website, featuring our flagship game, STARDUSTER.
 
 ## Description
-This repository contains the source code and files needed for the CobayaUnchained website. Our website is dedicated to showcase our main game, STARDUSTER, with a brief immersive 3D experience, providing information about the game and links to the demo.
+This repository contains the source code and files needed for the CobayaUnchained website. Our website is dedicated to showcase our main game, STARDUSTER, with a brief immersive 3D experience, providing information about the game and links to the demo. 
 
 ## Website
 You can check the webpage [here](https://www.cobayaunchained.com/)
 
-
-![STARDUSTER Preview](/static/images/CobayaUnchained.gif)
-
-
+<div align="center">
+    <img src="/static/images/CobayaUnchained.gif" alt="CobayaUnchained Logo" href="https://www.cobayaunchained.com/">
+</div>
 
 ## Technologies Used
 - HTML5
@@ -25,16 +24,40 @@ You can check the webpage [here](https://www.cobayaunchained.com/)
 This project is not open to external contributions. We appreciate your interest, but we do not accept pull requests or contributions at this time. Feel free to use the code for personal or educational purposes.
 
 ## Demo
-Explore the official demo of STARDUSTER directly from our website: [STARDUSTER Demo](demo_url)
+Explore the official demo of STARDUSTER directly from our website: [STARDUSTER Demo](https://jrefusta.itch.io/starduster)
+
+## Setup
+Download [Node.js](https://nodejs.org/en/download/).
+Run this followed commands:
+
+``` bash
+# Install dependencies (only the first time)
+npm install
+
+# Run the local server at localhost:8080
+npm run dev
+
+# Build for production in the dist/ directory
+npm run build
+```
 
 ## Contact
 If you have questions or suggestions, please feel free to contact us:
 
-- **Your Name (Your Personal Email):**
-  - Email: your.name@example.com
+- **Personal Info:**
+  - Email: jrefusta@gmail.com
+  - Twitter: [@jrefusta](https://twitter.com/jrefusta)
 
 - **CobayaUnchained Official Contact:**
-  - Email: info@cobayaunchained.com
+  - Email: cobayaunchained@gmail.com
+  - Twitter: [@CobayaUnchained](https://twitter.com/cobayaunchained)
   - Website: [www.cobayaunchained.com](https://www.cobayaunchained.com)
 
-Thanks for exploring our STARDUSTER showcase!
+## 
+<div align="center">
+    <img src="/static/images/CobayaUnchainedLogo.ico" alt="CobayaUnchained Logo" href="https://www.cobayaunchained.com/">
+</div>
+
+<p align="center">
+   Thanks for exploring our STARDUSTER showcase!
+</p>
