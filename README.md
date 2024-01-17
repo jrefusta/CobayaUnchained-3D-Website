@@ -1,6 +1,6 @@
 # CobayaUnchained - STARDUSTER Game Showcase
 <div align="center">
-    <img src="/static/images/Starduster_Logo_White.png" alt="CobayaUnchained Logo">
+    <img src="/static/images/Starduster_Logo_White.png" alt="CobayaUnchained Logo" href="https://www.cobayaunchained.com/">
 </div>
 Welcome to the official repository of CobayaUnchained website, featuring our flagship game, STARDUSTER.
 
