@@ -25,7 +25,7 @@ You can check the webpage [here](https://www.cobayaunchained.com/)
 This project is not open to external contributions. We appreciate your interest, but we do not accept pull requests or contributions at this time. Feel free to use the code for personal or educational purposes.
 
 ## Demo
-Explore the official demo of STARDUSTER directly from our website: [STARDUSTER Demo](https://jrefusta.itch.io/starduster)
+Explore the official demo of STARDUSTER directly from our website: [STARDUSTER Demo](https://store.steampowered.com/app/2878260/STARDUSTER/)
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).

@@ -62,12 +62,15 @@
       pointer-events: none;
     }
 
-    #itchioBadge {
-      display: flex;
-      margin-bottom: 1vh;
-      margin-top: 2vh;
-      width: 200px;
-      height: auto;
+    #steamBadge {
+      cursor: pointer;
+      text-align: center;
+    }
+
+    #steamBadge_img {
+      width: 25vw;
+      align-items: center;
+      order: 1;
     }
 
     #info_container {
@@ -117,7 +120,6 @@
     }
 
     #starduster_logo_img {
-      width: auto;
       width: 30vw;
       align-items: center;
       order: 1;
@@ -130,6 +132,10 @@
 
       #cobayaUnchainedLogo {
         width: 40vw;
+      }
+
+      #steamBadge_img {
+        width: 70vw;
       }
     }
 
@@ -243,7 +249,7 @@
 
     .menu__link {
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.5rem;
       color: black;
       margin: 0 10px;
       display: inline-block;
@@ -377,8 +383,7 @@
 
       <li class="menu__item"><a class="menu__link" onclick=showVideo()>WATCH TRAILER</a></li>
       <li class="menu__sep"></li>
-      <li class="menu__item"><a class="menu__link" href="https://jrefusta.itch.io/starduster" target="_blank">DOWNLOAD
-          DEMO</a></li>
+      <li class="menu__item"><a class="menu__link" href="https://store.steampowered.com/app/2878260/STARDUSTER/" target="_blank"> ADD WISHLIST NOW</a></li>
       <li class="menu__sep"></li>
 
       <li class="menu__item"><a class="menu__link" href="mailto:cobayaunchained@gmail.com" target="_blank">CONTACT</a>
@@ -411,11 +416,11 @@
         <img id="starduster_logo_img" src="/static/images/Starduster_Logo_White.png" alt="Starduster" />
       </div>
       <div id="playDemoNow">
-        <p style="color:white;">PLAY DEMO NOW</p>
+        <p style="color:white;">ADD WISHLIST AND PLAY DEMO NOW</p>
       </div>
 
-      <a id="itchioBadge" href="https://jrefusta.itch.io/starduster" target="_blank">
-        <img type="image/svg+xml" src="/static/images/itchio.svg" width="200px" height=auto />
+      <a id="steamBadge" href="https://store.steampowered.com/app/2878260/STARDUSTER/" target="_blank">
+        <img id="steamBadge_img" src="/static/images/steam_wishlist.png" alt="SteamBadge" />
       </a>
     </div>
     <footer class="footer" id="footer">
@@ -463,25 +468,31 @@
 
     let youtubePlayer;
 
-    function onYouTubeIframeAPIReady() {
+    function readyVideo() {
       youtubePlayer = new YT.Player('videoFrame', {
         events: {
           'onReady': onPlayerReady
         }
       });
     }
-
+    
     function onPlayerReady(event) {
-    }
-
-    function showVideo() {
-      videoContainer.style.display = 'block';
-      blackBackground.style.display = 'block';
+      showVideo();
       youtubePlayer.playVideo();
     }
 
+    function showVideo() {
+      if (!youtubePlayer) {
+        readyVideo();
+      }
+      videoContainer.style.display = 'block';
+      blackBackground.style.display = 'block';
+    }
+
     function hideVideo() {
-      youtubePlayer.pauseVideo();
+      if (youtubePlayer) {
+        youtubePlayer.pauseVideo();
+      }
       videoContainer.style.display = 'none';
       blackBackground.style.display = 'none';
     }
